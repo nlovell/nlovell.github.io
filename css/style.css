@@ -1,10 +1,11 @@
-html, body, #tv {
+html,
+body,
+#tv {
 	padding: 0;
 	margin: 0;
 	width: 100%;
 	height: 100%;
 }
-
 #tv {
 	position: absolute;
 	top: 0%;
@@ -18,51 +19,51 @@ html, body, #tv {
 	width: 100%;
 	z-index: -1;
 }
-
-#bezel{
-	position:absolute;
+#bezel {
+	position: absolute;
 	height: 100%;
 	width: 100%;
-    top: 0px;
-    right: 0px;
+	top: 0px;
+	right: 0px;
 	z-index: 0;
+	pointer-events: none;
 }
-
-
 body {
-      background: #666;
-      background-image: url('txture.png');
-      padding: 0;
-      font-size: 36px;
-      font-family: 'Consolas', serif;
-      }
-	  
-	  body {
-  text-align: center;
-  text-color:WHITE;
-  padding-top:2em;
-  font-family:"consolas";
+	background: #666;
+	background-image: url('txture.png');
+	padding: 0;
+	font-size: 36px;
+	font-family: 'Consolas', serif;
 }
+body {
+	text-align: center;
+	text-color: WHITE;
+	padding-top: 2em;
+	font-family: "consolas";
+}
+* {
+	color: WHITE;
+	text-decoration: none;
+}
+#text-block {
+	color: transparent;
+	text-shadow: WHITE 0 0 3px;
+	font-size: 2em;
+}
+#text-block .flickr {
+	color: WHITE;
+	text-shadow: WHITE 0 0 1px;
+	-webkit-transition: text-shadow 0.2s ease-in-out;
+	-moz-transition: text-shadow 0.2s ease-in-out;
+	transition: text-shadow 0.2s ease-in-out;
+	/* Transitions defined for smoother anim. */
+}
+#wrap {} 
 
-* { color:WHITE; text-decoration: none;}
-	  
-	  
-      #text-block {
-      color: transparent;
-      text-shadow: WHITE 0 0 3px;
-      font-size: 2em;
-      }
-      #text-block .flickr {
-      color: WHITE;
-      text-shadow: WHITE 0 0 1px;
-      -webkit-transition: text-shadow 0.2s ease-in-out;
-      -moz-transition:    text-shadow 0.2s ease-in-out;
-      transition:         text-shadow 0.2s ease-in-out;
-      /* Transitions defined for smoother anim. */
-      }
-      #wrap {
-      }
-      #logo {
-      padding-top: 22%;
-      text-align: center;
-      }
+#logo {
+	padding-top: 22%;
+	text-align: center;
+}
+#element {
+	z-index: 2;
+}
