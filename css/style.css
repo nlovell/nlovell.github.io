@@ -32,3 +32,15 @@ div img {
 	padding: 0;
 	margin: 0;
 }
+
+#nlovell {
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:2%;
+	text-align:center;
+    margin:auto;
+	color: #D1D0CB;
+	font-family:"consolas";
+	font-size:1em;
+}
