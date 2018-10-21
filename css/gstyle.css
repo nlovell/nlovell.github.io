@@ -15,7 +15,7 @@ body {
           transform: translate(-50%, -50%);
   margin: 0;
   text-decoration: none;
-  color: #D1D0CB;;
+  color: #D1D0CB;
 }
 .glitch:before, .glitch:after {
   display: block;
@@ -27,6 +27,11 @@ body {
   width: 100%;
   opacity: .8;
 }
+
+.glitch:hover {
+	color: #fff;
+}
+
 .glitch:hover:after {
   color: #f9f;
   z-index: -2;
