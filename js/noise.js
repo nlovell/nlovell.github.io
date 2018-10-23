@@ -116,7 +116,7 @@ var Noise=function(){function d(a){a.audioSource&&(clearTimeout(c),a.audioSource
 d(a)}}}}();
 //*/
 var noise = {
-  volume: 0.05, // 0 - 1
-  fadeIn: 2.5, // time in seconds
+  volume: 0.1, // 0 - 1
+  fadeIn: 60, // time in seconds
   fadeOut: 1.3, // time in seconds
 }
