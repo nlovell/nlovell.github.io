@@ -13,58 +13,54 @@
 	width: 100%;
 	z-index: -1;
 }
-
-
 div img {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-	height:40%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	height: 40%;
 }
-
-#center{
-	display:inline-block;
-	width:100%;
-	height:33%;
+#center {
+	display: inline-block;
+	width: 100%;
+	height: 33%;
 	padding: 0;
 	margin: 0;
 }
-
 #nlovell {
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:2%;
-	text-align:center;
-    margin:auto;
+	/*uwu its me, ya boi*/
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 2%;
+	text-align: center;
+	margin: auto;
 	color: #D1D0CB;
 	font-family: 'Alegreya Sans', sans-serif;
-	font-size:1em;
+	font-size: 1em;
 }
-
 #drive {
-    position:absolute;
-    left:0;
-    right:0;
-    top:2%;
-	text-align:center;
-    margin:auto;
-	height:5%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 2%;
+	text-align: center;
+	margin: auto;
+	height: 5%;
 }
-
-#driveicon{
-	height:50%;
+#driveicon {
+	height: 50%;
 	opacity: 0.9;
 }
-
 * {
-	
-	-webkit-user-select: none; /* Safari */        
-	-moz-user-select: none; /* Firefox */
-	-ms-user-select: none; /* IE10+/Edge */
-	user-select: none; /* Standard */
-	
+	-webkit-user-select: none;
+	/* Safari */
+	-moz-user-select: none;
+	/* Firefox */
+	-ms-user-select: none;
+	/* IE10+/Edge */
+	user-select: none;
+	/* Standard */
 }
