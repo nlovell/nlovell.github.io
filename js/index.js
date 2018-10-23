@@ -145,9 +145,3 @@ var TxtType = function(el, toRotate, period) {
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
         document.body.appendChild(css);
     };
-
-	/* this one doesn't work in a linear fashion */
-var element = document.getElementById("element");
-
-TweenMax.to(element, 5, {x:"+=30", yoyo:true, repeat:-1});
-TweenMax.to(element, 5, {x:"-=30", yoyo:true, repeat:-1});

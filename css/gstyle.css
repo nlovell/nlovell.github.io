@@ -1,5 +1,5 @@
 body {
-  background-color: #2B0059;
+  background-color: #777;
   color: #fff;
 }
 
@@ -16,10 +16,10 @@ body {
   margin: 0;
   text-decoration: none;
   color: #D1D0CB;
+  text-align: center;
 }
 .glitch:before, .glitch:after {
   display: block;
-  content: 'wake up.';
   position: absolute;
   top: 0;
   left: 0;

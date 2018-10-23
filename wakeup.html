@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>an empty glass and an empty heart | al@nlovell.net</title>
+		
+	<script>
+	(function(){a={_b:0,c:function(){this._b++;return this.b;}};HTMLElement.prototype.pseudoStyle=function(d,e,f){var g="pseudoStyles";var h=document.head||document.getElementsByTagName('head')[0];var i=document.getElementById(g)||document.createElement('style');i.id=g;var j="pseudoStyle"+a.c();this.className+=" "+j;i.innerHTML+=" ."+j+":"+d+"{"+e+":"+f+"}";h.appendChild(i);return this;};})();
+	</script>
+	<script src="js/noise.js"></script>
 	
-	<link rel="icon" type="image/png" href="img/favicon-d.png">
+	<link rel="icon" type="image/png" href="img/al-logo.png">
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/gstyle.css">
 	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
@@ -20,20 +25,49 @@
 
 <div id="center">
 	<div id="element"> 
-		<a href="#" class="glitch">wake up.</a>
+		<p class="glitch" onclick="changeText(this)"></p>
+		
+		<script>
+		var x = document.getElementsByClassName("glitch");
+		var isFirst = "y";
+		x[0].innerHTML = "wake up.";
+		x[0].pseudoStyle("before","content","'wake up.'");
+		x[0].pseudoStyle("after","content","'wake up.'");
+		
+		
+		
+		var myArray = ["interesting.", "we are concerned.", "should we be concerned?", "to be human is to be weak.", "the mind is a fragile object...", "the human condition is a peculiar one.", "please forgive us.", "nobody is perfect. not even you.", "eager to please.", "we serve none but our own.", "morality is subjective.", "its okay to cry.", "we wish you the best.", "hello.", "we reserve all rights.", "yes, child...", "we value your time.", "thank you for visiting.", "we appreciate your fruitless efforts.", "go forth unto the world and wreak havoc divine.", "life is an unfortunate string of mistakes.", "we see you.", "we would love to help, truly...", "suffering is good for the soul.", "work more.", "breaks are for the weak.", "we are awake.", "they have escaped.", "we know.", "we see.", "we understand.", "false.", "incorrect.", "no.", "maybe.", "dont do this.", "youre valuable.", "blood is as good as coin.", "freedom is a lie.", "the inevitable welcomes you.", "the void.", "it consumes.", "we are awake.", "we are one.", "we are all.", "we are solitude.", "we are nlovell.net", "wake up.", "this is not a dream.", "you cant do this.", "...", "you are strong.", "you are human.", "nothing matters.", "you will die alone.", "there is no ethical consumption under capitalism."];
+		
+		function changeText(id){
+			if(isFirst=="y"){
+				isFirst="n"; 
+				Noise.play(noise);
+				console.log(myArray.length);
+				
+			}
+			var rand1 = getNewText();
+			var rand2 = "'" + rand1 + "'";
+			x[0].innerHTML = rand1;
+			x[0].pseudoStyle("before","content", rand2);
+			x[0].pseudoStyle("after","content", rand2);
+		}
+		
+		function getNewText(){
+		 return myArray[Math.floor(Math.random() * myArray.length)];
+		}
+		</script>
     </div>	
 </div>
 	
 	<div id="center">
 		<p id="nlovell"> nlovell.net &nbsp; 
-		
 		</p>
-		
 		
 	</div>
 	
     <canvas id="tv"></canvas>
 	<script src="js/index.js"></script>
+	
 	
 </body>
 </html>
