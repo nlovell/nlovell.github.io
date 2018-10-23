@@ -4,7 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>an empty glass and an empty heart | al@nlovell.net</title>
+	
 	<script>
+		//pseudoStyle
 		(function(){a={_b:0,c:function(){this._b++;return this.b;}};HTMLElement.prototype.pseudoStyle=function(d,e,f){var g="pseudoStyles";var h=document.head||document.getElementsByTagName('head')[0];var i=document.getElementById(g)||document.createElement('style');i.id=g;var j="pseudoStyle"+a.c();this.className+=" "+j;i.innerHTML+=" ."+j+":"+d+"{"+e+":"+f+"}";h.appendChild(i);return this;};})();
 	</script>
 	<script src="js/noise.js"></script>
@@ -46,11 +48,10 @@
 				
 					var myClasses = document.getElementById("glitchyboi").classList;
 					
+					//removes any previous psuedoStyleundefined created by the pseudoStyle js script
 					if (myClasses.contains("pseudoStyleundefined")) {
 						myClasses.remove("pseudoStyleundefined");
 					 } 
-					
-					
 					if(isFirst=="y"){ 
 						Noise.play(noise);
 						console.log(myArray.length);
@@ -61,8 +62,7 @@
 					x[0].pseudoStyle("before","content", rand2);
 					x[0].pseudoStyle("after","content", rand2);
 					
-					if([Math.floor(Math.random() * 30)]==42){ 
-							//originally this was 100 and 42
+					if([Math.floor(Math.random() * 100)]==42){ 
 							//so here's a fun fact about the number 42
 							//in japanese, the numbers four and two are pronounced thusly:
 							//Shi - し

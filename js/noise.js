@@ -118,5 +118,5 @@ d(a)}}}}();
 var noise = {
   volume: 0.1, // 0 - 1
   fadeIn: 60, // time in seconds
-  fadeOut: 1.3, // time in seconds
+  fadeOut: 5, // time in seconds
 }
