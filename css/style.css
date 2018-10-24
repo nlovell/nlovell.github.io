@@ -22,13 +22,14 @@ div img {
 	margin: auto;
 	height: 40%;
 }
-#center {
+.center {
 	display: inline-block;
 	width: 100%;
 	height: 33%;
 	padding: 0;
 	margin: 0;
 }
+
 #nlovell {
 	/*uwu its me, ya boi*/
 	position: absolute;
@@ -61,3 +62,40 @@ div img {
 	user-select: none;
 	/* Standard */
 }
+
+@keyframes heartbeat
+{
+  0%
+  {
+    transform: scale( .75 );
+  }
+  20%
+  { 
+    transform: scale( 1 );
+  }
+  40%
+  {
+    transform: scale( .75 );
+  }
+  60%
+  {
+    transform: scale( 1 );
+  }
+  80%
+  {  
+    transform: scale( .75 );
+  }
+  100%
+  {   
+    transform: scale( .75 );
+  }
+}
+
+.pulse
+{
+	animation: heartbeat 1s infinite;
+	animation-fill-mode: forwards;
+	position: fixed; /* or absolute */
+	top: 50%;
+	left: 50%;
+  }
