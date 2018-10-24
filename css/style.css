@@ -39,7 +39,7 @@ div img {
 	margin: auto;
 	color: #D1D0CB;
 	font-family: 'Alegreya Sans', sans-serif;
-	font-size: 3.5vmin;
+	font-size: 2.5vmin;
 }
 .drive {
 	opacity: 0.9;
@@ -49,7 +49,7 @@ div img {
 	top: 2%;
 	text-align: center;
 	margin: auto;
-	height: 5%;
+	height: 3.5%;
 }
 * {
 	-webkit-user-select: none;
