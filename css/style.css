@@ -39,9 +39,10 @@ div img {
 	margin: auto;
 	color: #D1D0CB;
 	font-family: 'Alegreya Sans', sans-serif;
-	font-size: 1em;
+	font-size: 3.5vmin;
 }
-#drive {
+.drive {
+	opacity: 0.9;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -49,10 +50,6 @@ div img {
 	text-align: center;
 	margin: auto;
 	height: 5%;
-}
-#driveicon {
-	height: 50%;
-	opacity: 0.9;
 }
 * {
 	-webkit-user-select: none;
