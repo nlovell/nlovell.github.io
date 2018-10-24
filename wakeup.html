@@ -24,7 +24,7 @@
 
 <body style="overflow:hidden;">
 	<p id="drive">
-		<a href="https://drive.google.com/drive/u/1/folders/1Ywh5XlYehMNOI47HPEvIu6HSqimurQB_">
+		<a href="index">
 			<img id="driveicon" src="img/favicon.png">
 		</a>
 	</p>
@@ -58,6 +58,16 @@
 					}
 					var rand1 = getNewText();
 					var rand2 = "'" + rand1 + "'";
+					
+					console.log(myArray)
+					var index = myArray.indexOf(rand1);
+					if (index > -1) {
+					  myArray.splice(index, 1);
+					}
+					// array = [2, 9]
+					console.log(myArray);
+					console.log(myArray.length);
+					
 					x[0].innerHTML = rand1;
 					x[0].pseudoStyle("before","content", rand2);
 					x[0].pseudoStyle("after","content", rand2);
