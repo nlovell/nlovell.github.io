@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>get rekt | al@nlovell.net</title>
+
+	
+	<script>
+		//pseudoStyle
+		(function(){a={_b:0,c:function(){this._b++;return this.b;}};HTMLElement.prototype.pseudoStyle=function(d,e,f){var g="pseudoStyles";var h=document.head||document.getElementsByTagName('head')[0];var i=document.getElementById(g)||document.createElement('style');i.id=g;var j="pseudoStyle"+a.c();this.className+=" "+j;i.innerHTML+=" ."+j+":"+d+"{"+e+":"+f+"}";h.appendChild(i);return this;};})();
+	</script>
+	<script src="js/noise.js"></script>
+	<link rel="icon" type="image/png" href="img/al-logo.png">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/gstyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+	
+	<meta property="og:image" content="http://nlovell.net/img/card-r.jpg"/>
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta property="og:description" content="nlovell.net | a writhing mass of trial-and-error" />
+	<meta property="og:locale" content="en_GB" />
+	<meta property="og:site_name" content="nlovell.net" />
+</head>
+
+<body style="overflow:hidden;">
+	
+		<a href="index">
+			<img class="drive" src="img/favicon.png">
+		</a>
+		
+		<div class="pulse"> <!--test-->
+			<p id="glitchyboi" class="glitch"></p>
+		</div>
+		
+		<script>
+			//initialises the glitch thing
+			var x = document.getElementsByClassName("glitch");
+			var isFirst = "y";
+			x[0].innerHTML = "go h*ck ursalf";
+			x[0].pseudoStyle("before","content","'go h*ck ursalf'");
+			x[0].pseudoStyle("after","content","'go h*ck ursalf'");
+		</script>
+
+	
+	<div class="center">
+		<p id="nlovell">nlovell.net</p>
+	</div>
+	<!--tv generates the background-->
+	<canvas id="tv"></canvas>
+	<script src="js/index.js"></script>
+</body>
+
+</html>
