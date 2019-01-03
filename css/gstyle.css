@@ -32,6 +32,7 @@ body {
 }
 .glitch:hover {
 	color: #fff;
+	cursor:none;
 }
 .glitch:hover:after {
 	color: #f9f;
