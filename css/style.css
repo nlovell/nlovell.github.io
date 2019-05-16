@@ -106,9 +106,9 @@ div img {
   
   .flip-box {
   background-color: transparent;
-  width: 700px;
-  height: 500px;
-  perspective: 1000px;
+  width: 70vmin;
+  height: calc((70vmin/85) *55);
+  perspective: 100vmin;
   	position: absolute;
 	top: 0;
 	left: 0;
