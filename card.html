@@ -16,6 +16,7 @@
 	<meta property="og:description" content="nlovell.net | a writhing mass of trial-and-error" />
 	<meta property="og:locale" content="en_GB" />
 	<meta property="og:site_name" content="nlovell.net" />
+
 </head>
 
 <body style="overflow:hidden;">
@@ -28,10 +29,10 @@
 			<div class="flip-box">
 			  <div class="flip-box-inner">
 				<div class="flip-box-front" style="border-radius:5.5%;">
-				  <img src="img/cardv2-r.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%">
+				  <img src="img/cardv2-r.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%" id="sider">
 				</div>
 				<div class="flip-box-back" style="border-radius:5.5%;">
-				  <img src="img/cardv2.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%">
+				  <img src="img/cardv2.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%" id="side">
 				</div>
 			  </div>
 			</div>
@@ -45,6 +46,19 @@
 	<!--tv generates the background-->
 	<canvas id="tv"></canvas>
 	<script src="js/index.js"></script>
+	<script type="text/javascript"> 
+			var url_string = window.location.href
+			var url = new URL(url_string);
+			var c = url.searchParams.get("id");
+			console.log(c);
+			if(c == null) {
+			console.log("No element defined. Using default.")
+			} else {
+			document.getElementById("side").src="img/" + c + ".png";
+			document.getElementById("sider").src="img/" + c + "-r.png";
+			}
+	</script>
+	
 </body>
 
 </html>
