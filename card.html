@@ -40,8 +40,26 @@
       <canvas id="tv"></canvas>
       <script src="js/index.js"></script>
       <script type="text/javascript"> 
-         //Card directory
+			//Card directory
 			var cards = "img/cards/";
+
+			//Get the URL string
+			var url_string = window.location.href
+			var url = new URL(url_string);
+
+			//Search for the ID parameter
+			var c = url.searchParams.get("id");
+			console.log(c);
+			//Assign values to the cards
+			var card = cards + c + ".png";
+			var cardr = cards + c + "-r.png"
+
+			if(c == null) {
+			console.log("No element defined. Using default.")
+			} else {
+			checkImage(card, function(){imageFound(card, "side");}, function(){imageNotFound(card, "side");});
+			checkImage(cardr, function(){imageFound(cardr, "sider");}, function(){imageNotFound(cardr, "sider");});
+			}
 			
 			function checkImage(imageSrc, good, bad) {
 				var img = new Image();
@@ -51,24 +69,14 @@
 			}
 				function imageFound(URL, ELEMENT) {
 				document.getElementById(ELEMENT).src=URL;
+				console.log(URL + " found and displayed.");
 			}
-			function imageNotFound(ELEMENT) {
+			function imageNotFound(URL, ELEMENT) {
 				document.getElementById(ELEMENT).src=cards + "card404.png";
+				console.log(URL + " not found. 404 displayed instead.");
 			}
 	
 			
-			var url_string = window.location.href
-			var url = new URL(url_string);
-			var c = url.searchParams.get("id");
-			var card = cards + c + ".png";
-			var cardr = cards + c + "-r.png"
-			console.log(c);
-			if(c == null) {
-			console.log("No element defined. Using default.")
-			} else {
-			checkImage(card, function(){imageFound(card, "side");}, function(){imageNotFound("side");});
-			checkImage(cardr, function(){imageFound(cardr, "sider");}, function(){imageNotFound("sider");});
-			}
       </script>
    </body>
 </html>
