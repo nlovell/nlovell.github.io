@@ -47,33 +47,32 @@
 	<canvas id="tv"></canvas>
 	<script src="js/index.js"></script>
 	<script type="text/javascript"> 
-			function testImage(URL, ELEMENT) {
-				var tester=new Image();
-				tester.onload=imageFound(URL, ELEMENT);
-				tester.onerror=imageNotFound(ELEMENT);
-				tester.src=URL;
-			}
 
-			function imageFound(URL, ELEMENT) {
+			function checkImage(imageSrc, good, bad) {
+				var img = new Image();
+				img.onload = good; 
+				img.onerror = bad;
+				img.src = imageSrc;
+			}
+				function imageFound(URL, ELEMENT) {
 				document.getElementById(ELEMENT).src=URL;
 			}
-
 			function imageNotFound(ELEMENT) {
 				document.getElementById(ELEMENT).src="img/card404.png";
 			}
 	
-	
+
 			var url_string = window.location.href
 			var url = new URL(url_string);
 			var c = url.searchParams.get("id");
 			var card = "img/" + c + ".png";
 			var cardr = "img/" + c + "-r.png"
 			console.log(c);
-			if(c == null || c == "") {
+			if(c == null) {
 			console.log("No element defined. Using default.")
 			} else {
-			testImage(card, "side");
-			testImage(cardr, "sider");
+			checkImage(card, function(){imageFound(card, "side");}, function(){imageNotFound("side");});
+			checkImage(cardr, function(){imageFound(cardr, "sider");}, function(){imageNotFound("sider");});
 			}
 			
 	</script>
