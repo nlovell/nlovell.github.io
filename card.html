@@ -47,16 +47,35 @@
 	<canvas id="tv"></canvas>
 	<script src="js/index.js"></script>
 	<script type="text/javascript"> 
+			function testImage(URL, ELEMENT) {
+				var tester=new Image();
+				tester.onload=imageFound(URL, ELEMENT);
+				tester.onerror=imageNotFound(ELEMENT);
+				tester.src=URL;
+			}
+
+			function imageFound(URL, ELEMENT) {
+				document.getElementById(ELEMENT).src=URL;
+			}
+
+			function imageNotFound(ELEMENT) {
+				document.getElementById(ELEMENT).src="img/card404.png";
+			}
+	
+	
 			var url_string = window.location.href
 			var url = new URL(url_string);
 			var c = url.searchParams.get("id");
+			var card = "img/" + c + ".png";
+			var cardr = "img/" + c + "-r.png"
 			console.log(c);
-			if(c == null) {
+			if(c == null || c == "") {
 			console.log("No element defined. Using default.")
 			} else {
-			document.getElementById("side").src="img/" + c + ".png";
-			document.getElementById("sider").src="img/" + c + "-r.png";
+			testImage(card, "side");
+			testImage(cardr, "sider");
 			}
+			
 	</script>
 	
 </body>
