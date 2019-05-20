@@ -1,53 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>card | al@nlovell.net</title>
-	
-	<script src="js/noise.js"></script>
-	<link rel="icon" type="image/png" href="img/al-logo.png">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/gstyle.css">
-	<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
-	
-	<meta property="og:image" content="http://nlovell.net/img/card-r.jpg"/>
-	<meta property="og:image:type" content="image/jpeg" />
-	<meta property="og:description" content="nlovell.net | a writhing mass of trial-and-error" />
-	<meta property="og:locale" content="en_GB" />
-	<meta property="og:site_name" content="nlovell.net" />
-
-</head>
-
-<body style="overflow:hidden;">
-	
-		<a href="index">
-			<img class="drive" src="img/favicon.png">
-		</a>
-		
-		<div class="center"> <!--test-->
-			<div class="flip-box">
-			  <div class="flip-box-inner">
-				<div class="flip-box-front" style="border-radius:5.5%;">
-				  <img src="img/cardv2-r.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%" id="sider">
-				</div>
-				<div class="flip-box-back" style="border-radius:5.5%;">
-				  <img src="img/cardv2.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%" id="side">
-				</div>
-			  </div>
-			</div>
-		</div>
-		
-		
-	
-	<div class="center">
-		<p id="nlovell">nlovell.net</p>
-	</div>
-	<!--tv generates the background-->
-	<canvas id="tv"></canvas>
-	<script src="js/index.js"></script>
-	<script type="text/javascript"> 
-
+<html
+   xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:fb="http://ogp.me/ns/fb#" lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>card | al@nlovell.net</title>
+      <script src="js/noise.js"></script>
+      <link rel="icon" type="image/png" href="img/al-logo.png">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/gstyle.css">
+      <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+      <meta property="og:image" content="http://nlovell.net/img/cards/card-r.jpg"/>
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:description" content="nlovell.net | a writhing mass of trial-and-error" />
+      <meta property="og:locale" content="en_GB" />
+      <meta property="og:site_name" content="nlovell.net" />
+   </head>
+   <body style="overflow:hidden;">
+      <a href="index">
+      <img class="drive" src="img/favicon.png">
+      </a>
+      <div class="center">
+         <!--test-->
+         <div class="flip-box">
+            <div class="flip-box-inner">
+               <div class="flip-box-front" style="border-radius:5.5%;">
+                  <img src="img/cardv2-r.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%" id="sider">
+               </div>
+               <div class="flip-box-back" style="border-radius:5.5%;">
+                  <img src="img/cardv2.png" alt="Card" style="border-radius:5.5%;width:100%;height:100%" id="side">
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="center">
+         <p id="nlovell">nlovell.net</p>
+      </div>
+      <!--tv generates the background-->
+      <canvas id="tv"></canvas>
+      <script src="js/index.js"></script>
+      <script type="text/javascript"> 
+         //Card directory
+			var cards = "img/cards/";
+			
 			function checkImage(imageSrc, good, bad) {
 				var img = new Image();
 				img.onload = good; 
@@ -58,15 +53,15 @@
 				document.getElementById(ELEMENT).src=URL;
 			}
 			function imageNotFound(ELEMENT) {
-				document.getElementById(ELEMENT).src="img/card404.png";
+				document.getElementById(ELEMENT).src=cards + "card404.png";
 			}
 	
-
+			
 			var url_string = window.location.href
 			var url = new URL(url_string);
 			var c = url.searchParams.get("id");
-			var card = "img/" + c + ".png";
-			var cardr = "img/" + c + "-r.png"
+			var card = cards + c + ".png";
+			var cardr = cards + c + "-r.png"
 			console.log(c);
 			if(c == null) {
 			console.log("No element defined. Using default.")
@@ -74,9 +69,6 @@
 			checkImage(card, function(){imageFound(card, "side");}, function(){imageNotFound("side");});
 			checkImage(cardr, function(){imageFound(cardr, "sider");}, function(){imageNotFound("sider");});
 			}
-			
-	</script>
-	
-</body>
-
+      </script>
+   </body>
 </html>
