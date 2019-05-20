@@ -50,9 +50,13 @@
 			//Search for the ID parameter
 			var c = url.searchParams.get("id");
 			console.log(c);
+			var ext = url.searchParams.get("ext")
+			if(ext == null) { 
+				ext = "png"
+			}
 			//Assign values to the cards
-			var card = cards + c + ".png";
-			var cardr = cards + c + "-r.png"
+			var card = cards + c + "." + ext;
+			var cardr = cards + c + "-r." + ext
 
 			if(c == null) {
 			console.log("No element defined. Using default.")
