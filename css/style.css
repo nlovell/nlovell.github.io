@@ -31,6 +31,11 @@ div img {
 }
 
 #nlovell {
+	bottom: 4.5%;
+	font-size: 2.5vmin;
+}
+
+.footerText {
 	/*uwu its me, ya boi*/
 	position: absolute;
 	left: 0;
@@ -40,8 +45,9 @@ div img {
 	margin: auto;
 	color: #D1D0CB;
 	font-family: 'Alegreya Sans', sans-serif;
-	font-size: 2.5vmin;
+	font-size: 1.5vmin;
 }
+
 .drive {
 	opacity: 0.9;
 	position: absolute;
