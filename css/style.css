@@ -48,6 +48,10 @@ div img {
 	font-size: 1.5vmin;
 }
 
+a:visited {
+	color: #D1D0CB;
+}
+
 .drive {
 	opacity: 0.9;
 	position: absolute;
