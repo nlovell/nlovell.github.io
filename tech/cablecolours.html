@@ -2,10 +2,10 @@
    <style>
       svg {
       stroke: #000;
-      stroke-width: 10;
+      stroke-width:6;
       stroke-linecap: round;
       stroke-linejoin: round;
-      fill: none;
+      fill: #000;
       }
 	  
 	  .shadow {
@@ -55,7 +55,7 @@
    }
    
    function updateCopyBox(){
-   
+	
    
    }
    
@@ -104,10 +104,10 @@
    		var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 		
    		line.setAttribute('x1', (40) - offset + i*124);
-   		line.setAttribute('y1', 25);
+   		line.setAttribute('y1', 24);
    
    		line.setAttribute('x2', (104) - offset + i*124);
-   		line.setAttribute('y2', 15);
+   		line.setAttribute('y2', 16);
    		
    		line.setAttribute('style', stroke);
    		line.setAttribute('class', strand);
