@@ -1,0 +1,95 @@
+<head>
+   <style>
+      svg {
+      stroke: #000;
+      stroke-width: 9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      }
+   </style>
+</head>
+<div>
+   <input type="color" id="input1" name="head"
+      value="#e66465" oninput="testFunc(1)">
+   <label for="head">Strand 1</label>
+</div>
+<div>
+   <input type="color" id="input2" name="head"
+      value="#e66465" oninput="testFunc(2)">
+   <label for="head">Strand 2</label>
+</div>
+<div>
+   <input type="color" id="input3" name="head"
+      value="#e66465" oninput="testFunc(3)">
+   <label for="head">Strand 3</label>
+</div>
+<div>
+   <input type="color" id="input4" name="head"
+      value="#e66465" oninput="testFunc(4)">
+   <label for="head">Strand 4</label>
+</div>
+<div id="sine_wave">
+   <svg viewbox="0 0 200 600" style="width:80%">
+   </svg>
+</div>
+<script>
+   function testFunc(selecter) {
+   	var input = 'input'.concat(selecter);
+   	var strand = 'strand'.concat(selecter);
+   	//console.log(input);
+   
+     var x = document.getElementById(input).value;
+     var y = document.getElementsByClassName(strand);
+     
+     for (i = 0; i < y.length; i++) {
+     y[i].style.stroke = x;
+   }
+   }
+   
+   var svg = document.getElementById('sine_wave').children[0];
+   var origin = { //origin of axes
+       x: 10,
+       y: 20
+   };
+   var amplitude = 10; // wave amplitude
+   var rarity = 1; // point spacing
+   var freq = 0.05; // angular frequency
+   //var phase = 0; // phase angle
+   
+   function newSine(phase, selecter){
+   		var strand = 'strand'.concat(selecter);
+   		var input = 'input'.concat(selecter);
+   
+   		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
+   		document.getElementById(input).value = colour;
+   
+   		var stroke = "stroke:".concat(colour);
+   		var z = 0;
+   	for (var i = -10; i < 200; i++) {
+   	//console.log(strand);
+   		var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+   
+   		line.setAttribute('x1', (i - 1) * rarity + origin.x);
+   		line.setAttribute('y1', Math.sin(freq*(i - 1 + phase)) * amplitude + origin.y);
+   
+   		line.setAttribute('x2', i * rarity + origin.x);
+   		line.setAttribute('y2', Math.sin(freq*(i + phase)) * amplitude + origin.y);
+   		
+   		line.setAttribute('style', stroke);
+   		line.setAttribute('class', strand);
+   		//line.setAttribute('z-index', z);
+   		svg.appendChild(line);
+   		
+   		z=z+1;
+   	}
+   	
+   }
+   
+   newSine(0, '1');
+   newSine(90, '2');
+   
+   newSine(180, '3');
+   
+   newSine(280, '4');
+</script>
