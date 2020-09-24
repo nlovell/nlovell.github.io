@@ -36,9 +36,14 @@
    <label for="head">Strand 4</label>
 </div>
 <div id="sine_wave">
-   <svg viewbox="0 0 250 100" style="width:100%" class="shadow">
+   <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
    </svg>
 </div>
+
+<div>
+   <input type="button" name="head" onClick="resetColours()" value="Random">
+</div>
+
 <script>
    function testFunc(selecter) {
    	var input = 'input'.concat(selecter);
@@ -57,6 +62,23 @@
    function updateCopyBox(){
 	
    
+   }
+   
+   function resetColours(){
+		for(var selecter = 1; selecter < 5; selecter++){
+		var strand = 'strand'.concat(selecter);
+   		var input = 'input'.concat(selecter);
+   
+   		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
+   		document.getElementById(input).value = colour;
+		
+		     var y = document.getElementsByClassName(strand);
+     
+			 for (i = 0; i < y.length; i++) {
+			 y[i].style.stroke = colour;
+			   }
+			
+		}
    }
    
    var svg = document.getElementById('sine_wave').children[0];
@@ -120,5 +142,7 @@
    newSine(189, '3');
    newLine(0, '2');
    newLine(-124/2, '4');
+   
+   resetColours();
 
 </script>
