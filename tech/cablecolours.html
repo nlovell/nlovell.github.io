@@ -2,11 +2,17 @@
    <style>
       svg {
       stroke: #000;
-      stroke-width: 9;
+      stroke-width: 10;
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
       }
+	  
+	  .shadow {
+  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 10px 10px 10px rgba(0, 0, 0, .7));
+  /* Similar syntax to box-shadow */
+}
    </style>
 </head>
 <div>
@@ -30,7 +36,7 @@
    <label for="head">Strand 4</label>
 </div>
 <div id="sine_wave">
-   <svg viewbox="0 0 250 100" style="width:100%">
+   <svg viewbox="0 0 250 100" style="width:100%" class="shadow">
    </svg>
 </div>
 <script>
@@ -45,6 +51,12 @@
      for (i = 0; i < y.length; i++) {
      y[i].style.stroke = x;
    }
+	updateCopyBox();
+   }
+   
+   function updateCopyBox(){
+   
+   
    }
    
    var svg = document.getElementById('sine_wave').children[0];
@@ -52,7 +64,7 @@
        x: 10,
        y: 20
    };
-   var amplitude = 10; // wave amplitude
+   var amplitude = 12; // wave amplitude
    var rarity = 1; // point spacing
    var freq = 0.05; // angular frequency
    //var phase = 0; // phase angle
@@ -65,9 +77,7 @@
    		document.getElementById(input).value = colour;
    
    		var stroke = "stroke:".concat(colour);
-   		var z = 0;
    	for (var i = -10; i < 250; i++) {
-   	//console.log(strand);
    		var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
    
    		line.setAttribute('x1', (i - 1) * rarity + origin.x);
@@ -78,18 +88,37 @@
    		
    		line.setAttribute('style', stroke);
    		line.setAttribute('class', strand);
-   		//line.setAttribute('z-index', z);
    		svg.appendChild(line);
-   		
-   		z=z+1;
    	}
-   	
    }
    
+      function newLine(offset, selecter){
+   		var strand = 'strand'.concat(selecter);
+   		var input = 'input'.concat(selecter);
+   
+   		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
+   		document.getElementById(input).value = colour;
+   
+   		var stroke = "stroke:".concat(colour);
+   	for (var i = -10; i < 5; i++) {
+   		var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		
+   		line.setAttribute('x1', (40) - offset + i*124);
+   		line.setAttribute('y1', 25);
+   
+   		line.setAttribute('x2', (104) - offset + i*124);
+   		line.setAttribute('y2', 15);
+   		
+   		line.setAttribute('style', stroke);
+   		line.setAttribute('class', strand);
+   		svg.appendChild(line);
+   	}
+   }
+
+
    newSine(0, '1');
-   newSine(90, '2');
-   
-   newSine(180, '3');
-   
-   newSine(280, '4');
+   newSine(189, '3');
+   newLine(0, '2');
+   newLine(-124/2, '4');
+
 </script>
