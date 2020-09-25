@@ -40,10 +40,12 @@
 </div>
 
 <div>
-   <textarea id="copybox" rows=5 cols=50></textarea>
+   <textarea id="copybox" rows=6 cols=60></textarea>
 
 </div>
 <input type="button" name="head" onClick="copy()" value="Copy colours">
+<input type="button" name="head" onClick="loadColours()" value="Load colours">
+
 
 <script>
    function testFunc(selecter) {
@@ -72,6 +74,31 @@
       template = template.replace("[1]", input1).replace("[2]", input2).replace("[3]", input3).replace("[4]", input4);
 
       document.getElementById("copybox").value = template;
+
+   }
+
+   function loadColours(){
+      colours = document.getElementById("copybox").value
+      regex = new RegExp('#\\w{6}', "g");
+      matched = colours.match(regex);
+
+      console.log(colours);
+      console.log(matched);
+
+      if(matched.length === 4){
+
+         for(i = 1; i<5; i++){
+            document.getElementById("input".concat(i)).value = matched[i-1];
+            var strand = 'strand'.concat(i);
+
+            var strands = document.getElementsByClassName(strand);
+
+            for (j = 0; j < strands.length; j++) {
+               strands[j].style.stroke = document.getElementById("input".concat(i)).value;
+            }
+         }
+      }
+
 
    }
 
