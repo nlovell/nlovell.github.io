@@ -114,8 +114,10 @@
    </div>
    <div class="flex-grid">
 
-      <input type="button" class="lower" name="head" onClick="copy()" value="Copy colours">
-      <input type="button" class="lower" name="head" onClick="loadColours()" value="Load colours">
+      <input type="button" class="lower" name="head" onClick="copy()" value="Copy Colours">
+      <input type="button" class="lower" name="head" onClick="loadColours()" value="Load Current">
+      <input type="button" class="lower" name="head" onClick="clipboardLoad()" value="Clear">
+
    </div>
 
 
@@ -141,6 +143,10 @@
          y[i].style.stroke = x;
       }
       updateCopyBox();
+   }
+
+   function clipboardLoad(){
+      document.getElementById("copybox").value="";
    }
 
    function updateCopyBox() {
