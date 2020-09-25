@@ -64,7 +64,7 @@
    function updateCopyBox() {
 
       var template = "Strand 1 - [1]\nStrand 2 - [2]\nStrand 3 - [3]\nStrand 4 - [4]"
-                     + "\nColours generated with NLovell Audio's Cable Previewer. \nhttps://nlovellaudio.co.uk/shop"
+         + "\nColours generated with NLovell Audio's Cable Previewer. \nhttps://nlovellaudio.co.uk/shop"
 
       var input1 = document.getElementById("input1").value;
       var input2 = document.getElementById("input2").value;
@@ -77,7 +77,7 @@
 
    }
 
-   function loadColours(){
+   function loadColours() {
       colours = document.getElementById("copybox").value
       regex = new RegExp('#\\w{6}', "g");
       matched = colours.match(regex);
@@ -85,10 +85,10 @@
       console.log(colours);
       console.log(matched);
 
-      if(matched.length === 4){
+      if (matched.length === 4) {
 
-         for(i = 1; i<5; i++){
-            document.getElementById("input".concat(i)).value = matched[i-1];
+         for (i = 1; i < 5; i++) {
+            document.getElementById("input".concat(i)).value = matched[i - 1];
             var strand = 'strand'.concat(i);
 
             var strands = document.getElementsByClassName(strand);
