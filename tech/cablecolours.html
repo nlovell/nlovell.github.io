@@ -38,6 +38,12 @@
    <label for="thick">Thickness</label>
    <input type="number" id="thick" name="thick" value="3" min="1" max="15" onChange="changeThickness()">
 </div>
+
+<div>
+   <textarea id="copybox"></textarea>
+   <input type="button" name="head" onClick="copy()" value="Copy colours">
+
+</div>
 <script>
    function testFunc(selecter) {
       var input = 'input'.concat(selecter);
@@ -54,8 +60,22 @@
    }
 
    function updateCopyBox() {
+      var newline = ' | ';
+      var input1 = document.getElementById("input1").value;
+      var input2 = document.getElementById("input2").value;
+      var input3 = document.getElementById("input3").value;
+      var input4 = document.getElementById("input4").value;
 
+      console.log(input4);
 
+      document.getElementById("copybox").value = input1.concat(newline).concat(input2).concat(newline).concat(input3).concat(newline).concat(input4);
+   }
+
+   function copy(){
+      var copy = document.getElementById("copybox");
+      copy.select();
+      copy.setSelectionRange(0, 99999)
+      document.execCommand("copy");
    }
 
    function changeThickness() {
@@ -83,6 +103,8 @@
          }
 
       }
+
+      updateCopyBox();
    }
 
    function getColour() {
