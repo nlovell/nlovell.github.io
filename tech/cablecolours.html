@@ -40,10 +40,11 @@
 </div>
 
 <div>
-   <textarea id="copybox"></textarea>
-   <input type="button" name="head" onClick="copy()" value="Copy colours">
+   <textarea id="copybox" rows=5 cols=50></textarea>
 
 </div>
+<input type="button" name="head" onClick="copy()" value="Copy colours">
+
 <script>
    function testFunc(selecter) {
       var input = 'input'.concat(selecter);
@@ -59,13 +60,19 @@
    }
 
    function updateCopyBox() {
-      var newline = ' | ';
+
+      var template = "Strand 1 - [1]\nStrand 2 - [2]\nStrand 3 - [3]\nStrand 4 - [4]"
+                     + "\nColours generated with NLovell Audio's Cable Previewer. \nhttps://nlovellaudio.co.uk/shop"
+
       var input1 = document.getElementById("input1").value;
       var input2 = document.getElementById("input2").value;
       var input3 = document.getElementById("input3").value;
       var input4 = document.getElementById("input4").value;
 
-      document.getElementById("copybox").value = input1.concat(newline).concat(input2).concat(newline).concat(input3).concat(newline).concat(input4);
+      template = template.replace("[1]", input1).replace("[2]", input2).replace("[3]", input3).replace("[4]", input4);
+
+      document.getElementById("copybox").value = template;
+
    }
 
    function copy() {
