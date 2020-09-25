@@ -1,33 +1,31 @@
 <head>
    <style>
       svg {
-         stroke: #000;
-         stroke-width: 6;
          stroke-linecap: round;
          stroke-linejoin: round;
-         fill: #000;
       }
 
       .shadow {
          -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .7));
          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .7));
-         /* Similar syntax to box-shadow */
       }
    </style>
 </head>
+
 <div>
-   <input type="color" id="input1" name="head" value="#e66465" oninput="testFunc(1)">
+   <input type="color" id="input1" name="head" oninput="testFunc(1)">
    <label for="head">Strand 1</label>
 
-   <input type="color" id="input2" name="head" value="#e66465" oninput="testFunc(2)">
+   <input type="color" id="input2" name="head" oninput="testFunc(2)">
    <label for="head">Strand 2</label>
 
-   <input type="color" id="input3" name="head" value="#e66465" oninput="testFunc(3)">
+   <input type="color" id="input3" name="head" oninput="testFunc(3)">
    <label for="head">Strand 3</label>
 
-   <input type="color" id="input4" name="head" value="#e66465" oninput="testFunc(4)">
+   <input type="color" id="input4" name="head" oninput="testFunc(4)">
    <label for="head">Strand 4</label>
 </div>
+
 <p>
 <div id="sine_wave">
    <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
@@ -38,7 +36,7 @@
 <div>
    <input type="button" name="head" onClick="resetColours()" value="Random Colours">
    <label for="thick">Thickness</label>
-   <input type="number" id="thick" name="thick" min="1" max="15" onChange="changeThickness()">
+   <input type="number" id="thick" name="thick" value="3" min="1" max="15" onChange="changeThickness()">
 </div>
 <script>
    function testFunc(selecter) {
@@ -136,10 +134,11 @@
    }
 
    newSine(0, '1', true);
-   newSine(189, '3', true);
+   newSine(188, '3', true);
    newSine(0, '2', false);
    newSine(-124 / 2, '4', false);
 
    resetColours();
+   changeThickness();
 
 </script>
