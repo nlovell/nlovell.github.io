@@ -1,9 +1,10 @@
 <head>
    <style>
-
       * {
          font-family: 'Nunito', sans-serif;
+         font-size: 1.2em;
       }
+
       svg {
          stroke-linecap: round;
          stroke-linejoin: round;
@@ -13,46 +14,88 @@
          -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .7));
          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .7));
       }
+
+      .flex-grid {
+         display: flex;
+         width: 70%;
+         justify-content: center;
+      }
+
+      .flex-grid .col {
+         flex: 1;
+         margin-left: auto;
+         margin-right: auto;
+         left: 0;
+         right: 0;
+         text-align: center;
+      }
+
+      .picker {
+         height:7vw;
+         width: 7vw;
+      }
    </style>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
 </head>
 
-<div>
-   <input type="color" id="input1" name="head" oninput="testFunc(1)">
-   <label for="head">Strand 1</label>
 
-   <input type="color" id="input2" name="head" oninput="testFunc(2)">
-   <label for="head">Strand 2</label>
+<div class="flex-grid">
+   <div class="col"> <input type="color" class="picker" id="input1" name="head" oninput="testFunc(1)">
+      <br /> <br />
+      <label for="head">Strand 1</label>
 
-   <input type="color" id="input3" name="head" oninput="testFunc(3)">
-   <label for="head">Strand 3</label>
+   </div>
+   <div class="col"> <input type="color" class="picker" id="input2" name="head" oninput="testFunc(2)">
+      <br /> <br />
+      <label for="head">Strand 2</label>
 
-   <input type="color" id="input4" name="head" oninput="testFunc(4)">
-   <label for="head">Strand 4</label>
+   </div>
+   <div class="col"> <input type="color" class="picker" id="input3" name="head" oninput="testFunc(3)">
+      <br /> <br />
+      <label for="head">Strand 3</label>
+
+   </div>
+   <div class="col"> <input type="color" class="picker" id="input4" name="head" oninput="testFunc(4)">
+      <br /> <br />
+      <label for="head">Strand 4</label>
+
+   </div>
 </div>
 
-<p>
-<div id="sine_wave">
-   <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
-   </svg>
-</div>
-</p>
+<br /> <br />
 
-<div>
-   <input type="button" name="head" onClick="resetColours()" value="Random Colours">
+<div class="flex-grid" id="sine_wave">
+      <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
+      </svg>
+</div>
+
+
+<div class="flex-grid">
+   <div class="col">
+   <input type="button" name="head" onClick="resetColours()" value="Random Colours"></div>
+   <div class="col">
    <label for="thick">Thickness</label>
    <input type="number" id="thick" name="thick" value="3" min="1" max="15" onChange="changeThickness()">
 </div>
+</div>
 
-<div>
+<br /> <br />
+
+<div class="flex-grid">
    <textarea id="copybox" rows=6 cols=60></textarea>
 
 </div>
+<div class="flex-grid">
+
 <input type="button" name="head" onClick="copy()" value="Copy colours">
 <input type="button" name="head" onClick="loadColours()" value="Load colours">
+</div>
 
 
+
+
+<!-- Start of Scripts -->
 <script>
    function testFunc(selecter) {
       var input = 'input'.concat(selecter);
