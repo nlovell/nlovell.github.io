@@ -48,7 +48,6 @@
    function testFunc(selecter) {
       var input = 'input'.concat(selecter);
       var strand = 'strand'.concat(selecter);
-      //console.log(input);
 
       var x = document.getElementById(input).value;
       var y = document.getElementsByClassName(strand);
@@ -66,12 +65,10 @@
       var input3 = document.getElementById("input3").value;
       var input4 = document.getElementById("input4").value;
 
-      console.log(input4);
-
       document.getElementById("copybox").value = input1.concat(newline).concat(input2).concat(newline).concat(input3).concat(newline).concat(input4);
    }
 
-   function copy(){
+   function copy() {
       var copy = document.getElementById("copybox");
       copy.select();
       copy.setSelectionRange(0, 99999)
