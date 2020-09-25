@@ -2,7 +2,7 @@
    <style>
       * {
          font-family: 'Nunito', sans-serif;
-         font-size: 1.2em;
+         font-size: 1.1em;
       }
 
       svg {
@@ -31,7 +31,7 @@
       }
 
       .picker {
-         height:7vw;
+         height: 7vw;
          width: 7vw;
       }
    </style>
@@ -41,22 +41,26 @@
 
 
 <div class="flex-grid">
-   <div class="col"> <input type="color" class="picker" id="input1" name="head" oninput="testFunc(1)">
+   <div class="col"> <input type="color" class="picker" id="input1" name="head" oninput="testFunc(1)"
+         onmouseover="highlight(1)">
       <br /> <br />
       <label for="head">Strand 1</label>
 
    </div>
-   <div class="col"> <input type="color" class="picker" id="input2" name="head" oninput="testFunc(2)">
+   <div class="col"> <input type="color" class="picker" id="input2" name="head" oninput="testFunc(2)"
+         onmouseover="highlight(2)">
       <br /> <br />
       <label for="head">Strand 2</label>
 
    </div>
-   <div class="col"> <input type="color" class="picker" id="input3" name="head" oninput="testFunc(3)">
+   <div class="col"> <input type="color" class="picker" id="input3" name="head" oninput="testFunc(3)"
+         onmouseover="highlight(3)">
       <br /> <br />
       <label for="head">Strand 3</label>
 
    </div>
-   <div class="col"> <input type="color" class="picker" id="input4" name="head" oninput="testFunc(4)">
+   <div class="col"> <input type="color" class="picker" id="input4" name="head" oninput="testFunc(4)"
+         onmouseover="highlight(4)">
       <br /> <br />
       <label for="head">Strand 4</label>
 
@@ -66,18 +70,18 @@
 <br /> <br />
 
 <div class="flex-grid" id="sine_wave">
-      <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
-      </svg>
+   <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
+   </svg>
 </div>
 
 
 <div class="flex-grid">
    <div class="col">
-   <input type="button" name="head" onClick="resetColours()" value="Random Colours"></div>
+      <input type="button" name="head" onClick="resetColours()" value="Random Colours"></div>
    <div class="col">
-   <label for="thick">Thickness</label>
-   <input type="number" id="thick" name="thick" value="3" min="1" max="15" onChange="changeThickness()">
-</div>
+      <label for="thick">Thickness</label>
+      <input type="number" id="thick" name="thick" value="3" min="1" max="15" onChange="changeThickness()">
+   </div>
 </div>
 
 <br /> <br />
@@ -88,8 +92,8 @@
 </div>
 <div class="flex-grid">
 
-<input type="button" name="head" onClick="copy()" value="Copy colours">
-<input type="button" name="head" onClick="loadColours()" value="Load colours">
+   <input type="button" name="head" onClick="copy()" value="Copy colours">
+   <input type="button" name="head" onClick="loadColours()" value="Load colours">
 </div>
 
 
@@ -97,6 +101,13 @@
 
 <!-- Start of Scripts -->
 <script>
+
+   function highlight(selecter) {
+      console.log(selecter);
+      var strand = 'strand'.concat(selecter);
+      var y = document.getElementsByClassName(strand);
+
+   }
    function testFunc(selecter) {
       var input = 'input'.concat(selecter);
       var strand = 'strand'.concat(selecter);
