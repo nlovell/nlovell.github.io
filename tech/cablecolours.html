@@ -1,161 +1,145 @@
 <head>
    <style>
       svg {
-      stroke: #000;
-      stroke-width:6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      fill: #000;
+         stroke: #000;
+         stroke-width: 6;
+         stroke-linecap: round;
+         stroke-linejoin: round;
+         fill: #000;
       }
-	  
-	  .shadow {
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
-  filter: drop-shadow( 10px 10px 10px rgba(0, 0, 0, .7));
-  /* Similar syntax to box-shadow */
-}
+
+      .shadow {
+         -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, .7));
+         filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, .7));
+         /* Similar syntax to box-shadow */
+      }
    </style>
 </head>
 <div>
-   <input type="color" id="input1" name="head"
-      value="#e66465" oninput="testFunc(1)">
+   <input type="color" id="input1" name="head" value="#e66465" oninput="testFunc(1)">
    <label for="head">Strand 1</label>
-</div>
-<div>
-   <input type="color" id="input2" name="head"
-      value="#e66465" oninput="testFunc(2)">
+
+   <input type="color" id="input2" name="head" value="#e66465" oninput="testFunc(2)">
    <label for="head">Strand 2</label>
-</div>
-<div>
-   <input type="color" id="input3" name="head"
-      value="#e66465" oninput="testFunc(3)">
+
+   <input type="color" id="input3" name="head" value="#e66465" oninput="testFunc(3)">
    <label for="head">Strand 3</label>
-</div>
-<div>
-   <input type="color" id="input4" name="head"
-      value="#e66465" oninput="testFunc(4)">
+
+   <input type="color" id="input4" name="head" value="#e66465" oninput="testFunc(4)">
    <label for="head">Strand 4</label>
 </div>
+<p>
 <div id="sine_wave">
    <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
    </svg>
 </div>
+</p>
 
 <div>
-   <input type="button" name="head" onClick="resetColours()" value="Random">
+   <input type="button" name="head" onClick="resetColours()" value="Random Colours">
+   <label for="thick">Thickness</label>
+   <input type="number" id="thick" name="thick" min="1" max="15" onChange="changeThickness()">
 </div>
-
-<label for="thick">Thickness</label>
-<input type="number" id="thick" name="thick" min="1" max="15" onChange="changeThickness()">
-
 <script>
    function testFunc(selecter) {
-   	var input = 'input'.concat(selecter);
-   	var strand = 'strand'.concat(selecter);
-   	//console.log(input);
-   
-     var x = document.getElementById(input).value;
-     var y = document.getElementsByClassName(strand);
-     
-     for (i = 0; i < y.length; i++) {
-     y[i].style.stroke = x;
+      var input = 'input'.concat(selecter);
+      var strand = 'strand'.concat(selecter);
+      //console.log(input);
+
+      var x = document.getElementById(input).value;
+      var y = document.getElementsByClassName(strand);
+
+      for (i = 0; i < y.length; i++) {
+         y[i].style.stroke = x;
+      }
+      updateCopyBox();
    }
-	updateCopyBox();
-   }
-   
-   function updateCopyBox(){
-	
-   
-   }
-   
-   function changeThickness(){
-        var x = document.getElementById('thick').value;
-		     var y = document.getElementsByClassName("svg");
-     
-        for (i = 0; i < y.length; i++) {
-			y[i].style.strokeWidth = x;
-		}
+
+   function updateCopyBox() {
+
 
    }
-   
-   function resetColours(){
-		for(var selecter = 1; selecter < 5; selecter++){
-		var strand = 'strand'.concat(selecter);
-   		var input = 'input'.concat(selecter);
-   
-   		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
-   		document.getElementById(input).value = colour;
-		
-		     var y = document.getElementsByClassName(strand);
-     
-			 for (i = 0; i < y.length; i++) {
-					y[i].style.stroke = colour;
-			   }
-			
-		}
+
+   function changeThickness() {
+      var x = document.getElementById('thick').value;
+      var y = document.getElementsByClassName("svg");
+
+      for (i = 0; i < y.length; i++) {
+         y[i].style.strokeWidth = x;
+      }
+
    }
-   
+
+   function resetColours() {
+      for (var selecter = 1; selecter < 5; selecter++) {
+         var strand = 'strand'.concat(selecter);
+         var input = 'input'.concat(selecter);
+
+         var colour = getColour();
+         document.getElementById(input).value = colour;
+
+         var y = document.getElementsByClassName(strand);
+
+         for (i = 0; i < y.length; i++) {
+            y[i].style.stroke = colour;
+         }
+
+      }
+   }
+
+   function getColour() {
+      return '#' + (Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0"));
+   }
+
    var svg = document.getElementById('sine_wave').children[0];
    var origin = { //origin of axes
-       x: 10,
-       y: 20
+      x: 10,
+      y: 20
    };
    var amplitude = 12; // wave amplitude
    var rarity = 1; // point spacing
    var freq = 0.05; // angular frequency
    //var phase = 0; // phase angle
-   
-   function newSine(phase, selecter){
-   		var strand = 'strand'.concat(selecter).concat(" svg");;
-   		var input = 'input'.concat(selecter);
-   
-   		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
-   		document.getElementById(input).value = colour;
-   
-   		var stroke = "stroke:".concat(colour);
-   	for (var i = -10; i < 250; i++) {
-   		var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-   
-   		line.setAttribute('x1', (i - 1) * rarity + origin.x);
-   		line.setAttribute('y1', Math.sin(freq*(i - 1 + phase)) * amplitude + origin.y);
-   
-   		line.setAttribute('x2', i * rarity + origin.x);
-   		line.setAttribute('y2', Math.sin(freq*(i + phase)) * amplitude + origin.y);
-   		
-   		line.setAttribute('style', stroke);
-   		line.setAttribute('class', strand);
-   		svg.appendChild(line);
-   	}
-   }
-   
-      function newLine(offset, selecter){
-   		var strand = 'strand'.concat(selecter).concat(" svg");
-   		var input = 'input'.concat(selecter);
-   
-   		var colour = '#'+Math.floor(Math.random()*16777215).toString(16);
-   		document.getElementById(input).value = colour;
-   
-   		var stroke = "stroke:".concat(colour);
-   	for (var i = -1; i < 5; i++) {
-   		var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-		
-   		line.setAttribute('x1', (40) - offset + i*124);
-   		line.setAttribute('y1', 24);
-   
-   		line.setAttribute('x2', (104) - offset + i*124);
-   		line.setAttribute('y2', 16);
-   		
-   		line.setAttribute('style', stroke);
-   		line.setAttribute('class', strand);
-   		svg.appendChild(line);
-   	}
+
+   function newSine(phase, selecter, isSine) {
+      var strand = 'strand'.concat(selecter).concat(" svg");;
+      var input = 'input'.concat(selecter);
+
+      if (isSine) {
+         for (var i = -10; i < 250; i++) {
+            var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+            line.setAttribute('x1', (i - 1) * rarity + origin.x);
+            line.setAttribute('y1', Math.sin(freq * (i - 1 + phase)) * amplitude + origin.y);
+
+            line.setAttribute('x2', i * rarity + origin.x);
+            line.setAttribute('y2', Math.sin(freq * (i + phase)) * amplitude + origin.y);
+
+            line.setAttribute('class', strand);
+            svg.appendChild(line);
+         }
+      }
+      else {
+         for (var i = -1; i < 5; i++) {
+            var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+
+            line.setAttribute('x1', (40) - phase + i * 124);
+            line.setAttribute('y1', 24);
+
+            line.setAttribute('x2', (104) - phase + i * 124);
+            line.setAttribute('y2', 16);
+
+            line.setAttribute('class', strand);
+            svg.appendChild(line);
+         }
+      }
    }
 
+   newSine(0, '1', true);
+   newSine(189, '3', true);
+   newSine(0, '2', false);
+   newSine(-124 / 2, '4', false);
 
-   newSine(0, '1');
-   newSine(189, '3');
-   newLine(0, '2');
-   newLine(-124/2, '4');
-   
    resetColours();
 
 </script>
