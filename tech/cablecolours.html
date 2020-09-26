@@ -90,7 +90,7 @@
    <br /> <br />
 
    <div class="flex-grid" id="sine_wave">
-      <svg viewbox="0 0 250 50" style="width:100%" class="shadow">
+      <svg viewbox="0 0 250 60" style="width:100%" class="shadow">
       </svg>
    </div>
 
@@ -232,15 +232,22 @@
       updateCopyBox();
    }
 
+   const origin = { //origin of axes
+      x: 10,
+      y: 30
+   };
+   
+   const lineOrigin = {
+      x: origin.x+30,
+      y: origin.y+4
+   }
+
    function getColour() {
       return '#' + (Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0"));
    }
 
    var svg = document.getElementById('sine_wave').children[0];
-   var origin = { //origin of axes
-      x: 10,
-      y: 20
-   };
+
    var amplitude = 12; // wave amplitude
    var rarity = 1; // point spacing
    var freq = 0.05; // angular frequency
@@ -268,11 +275,11 @@
          for (var i = -1; i < 5; i++) {
             var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-            line.setAttribute('x1', (40) - phase + i * 124);
-            line.setAttribute('y1', 24);
+            line.setAttribute('x1', (lineOrigin.x) - phase + i * 124);
+            line.setAttribute('y1', lineOrigin.y);
 
-            line.setAttribute('x2', (104) - phase + i * 124);
-            line.setAttribute('y2', 16);
+            line.setAttribute('x2', (lineOrigin.x+64) - phase + i * 124);
+            line.setAttribute('y2', lineOrigin.y-8);
 
             line.setAttribute('class', strand);
             svg.appendChild(line);
