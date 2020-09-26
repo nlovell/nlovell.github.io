@@ -62,25 +62,25 @@
 <div id="wrapper">
    <div class="flex-grid">
       <div class="col"> <input type="color" class="picker" id="input1" name="head" oninput="testFunc(1)"
-            onmouseover="highlight(1)">
+            onmouseover="highlight(1)" onmouseout="changeThickness()"">
          <br /> <br />
          <label for="head">Strand 1</label>
 
       </div>
       <div class="col"> <input type="color" class="picker" id="input2" name="head" oninput="testFunc(2)"
-            onmouseover="highlight(2)">
+            onmouseover="highlight(2)" onmouseout="changeThickness()">
          <br /> <br />
          <label for="head">Strand 2</label>
 
       </div>
       <div class="col"> <input type="color" class="picker" id="input3" name="head" oninput="testFunc(3)"
-            onmouseover="highlight(3)">
+            onmouseover="highlight(3)" onmouseout="changeThickness()">
          <br /> <br />
          <label for="head">Strand 3</label>
 
       </div>
       <div class="col"> <input type="color" class="picker" id="input4" name="head" oninput="testFunc(4)"
-            onmouseover="highlight(4)">
+            onmouseover="highlight(4)" onmouseout="changeThickness()">
          <br /> <br />
          <label for="head">Strand 4</label>
 
@@ -127,10 +127,16 @@
 <script>
 
    function highlight(selecter) {
-      console.log(selecter);
+      var input = 'input'.concat(selecter);
       var strand = 'strand'.concat(selecter);
-      var y = document.getElementsByClassName(strand);
 
+      var x = document.getElementById(input).value;
+      var y = document.getElementsByClassName(strand);
+      var thickness = parseInt(document.getElementById("thick").value)*1.7;
+      console.log(thickness);
+      for (i = 0; i < y.length; i++) {
+         y[i].style.strokeWidth = thickness;
+      }
    }
    function testFunc(selecter) {
       var input = 'input'.concat(selecter);
