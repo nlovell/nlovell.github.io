@@ -62,7 +62,7 @@
 <div id="wrapper">
    <div class="flex-grid">
       <div class="col"> <input type="color" class="picker" id="input1" name="head" oninput="testFunc(1)"
-            onmouseover="highlight(1)" onmouseout="changeThickness()"">
+            onmouseover="highlight(1)" onmouseout="changeThickness()">
          <br /> <br />
          <label for=" head">Strand 1</label>
          <br />
@@ -266,7 +266,9 @@
       var input = 'colours'.concat(selected);
       console.log(colourpicker);
 
-      document.getElementById(colourpicker).value = document.getElementById(input).value;
+      var value = document.getElementById(input).value;
+      if (value != "###")
+         document.getElementById(colourpicker).value = document.getElementById(input).value;
 
       updateStrand(selected);
    }
