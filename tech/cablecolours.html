@@ -41,9 +41,9 @@
       }
 
       testdiv {
-         outline-width:1px;
-         outline-style:solid;
-         outline-color:black;
+         outline-width: 1px;
+         outline-style: solid;
+         outline-color: black;
       }
 
       .lower {
@@ -64,26 +64,31 @@
       <div class="col"> <input type="color" class="picker" id="input1" name="head" oninput="testFunc(1)"
             onmouseover="highlight(1)" onmouseout="changeThickness()"">
          <br /> <br />
-         <label for="head">Strand 1</label>
-
+         <label for=" head">Strand 1</label>
+         <br />
+         <select name="colours" id="colours1" oninput="dropDownColours(1)"></select>
       </div>
       <div class="col"> <input type="color" class="picker" id="input2" name="head" oninput="testFunc(2)"
             onmouseover="highlight(2)" onmouseout="changeThickness()">
          <br /> <br />
          <label for="head">Strand 2</label>
-
+         <br />
+         <select name="colours" id="colours2" oninput="dropDownColours(2)">
+            <option value="###" selected hidden>Custom</select>
       </div>
       <div class="col"> <input type="color" class="picker" id="input3" name="head" oninput="testFunc(3)"
             onmouseover="highlight(3)" onmouseout="changeThickness()">
          <br /> <br />
          <label for="head">Strand 3</label>
-
+         <br />
+         <select name="colours" id="colours3" oninput="dropDownColours(3)"></select>
       </div>
       <div class="col"> <input type="color" class="picker" id="input4" name="head" oninput="testFunc(4)"
             onmouseover="highlight(4)" onmouseout="changeThickness()">
          <br /> <br />
          <label for="head">Strand 4</label>
-
+         <br />
+         <select name="colours" id="colours4" oninput="dropDownColours(4)"></select>
       </div>
    </div>
 
@@ -123,27 +128,38 @@
 
 </div>
 
+
+
 <!-- Start of Scripts -->
 <script>
 
+   function getStrands(selecter) {
+      var strand = 'strand'.concat(selecter);
+      return document.getElementsByClassName(strand);
+   }
+
    function highlight(selecter) {
       var input = 'input'.concat(selecter);
-      var strand = 'strand'.concat(selecter);
+      var strands = getStrands(selecter);
 
-      var x = document.getElementById(input).value;
-      var y = document.getElementsByClassName(strand);
-      var thickness = parseInt(document.getElementById("thick").value)*1.7;
+      var thickness = parseInt(document.getElementById("thick").value) * 1.7;
       console.log(thickness);
-      for (i = 0; i < y.length; i++) {
-         y[i].style.strokeWidth = thickness;
+      for (i = 0; i < strands.length; i++) {
+         strands[i].style.strokeWidth = thickness;
       }
    }
    function testFunc(selecter) {
-      var input = 'input'.concat(selecter);
-      var strand = 'strand'.concat(selecter);
+      document.getElementById("colours".concat(selecter)).value = "###";
 
+      updateStrand(selecter);
+   }
+
+   function updateStrand(selecter){
+
+      var input = 'input'.concat(selecter);
       var x = document.getElementById(input).value;
-      var y = document.getElementsByClassName(strand);
+
+      var y = getStrands(selecter);
 
       for (i = 0; i < y.length; i++) {
          y[i].style.stroke = x;
@@ -151,8 +167,8 @@
       updateCopyBox();
    }
 
-   function clipboardLoad(){
-      document.getElementById("copybox").value="";
+   function clipboardLoad() {
+      document.getElementById("copybox").value = "";
    }
 
    function updateCopyBox() {
@@ -192,8 +208,6 @@
             }
          }
       }
-
-
    }
 
    function copy() {
@@ -236,15 +250,27 @@
       x: 10,
       y: 30
    };
-   
+
    const lineOrigin = {
-      x: origin.x+30,
-      y: origin.y+4
+      x: origin.x + 30,
+      y: origin.y + 4
    }
 
    function getColour() {
       return '#' + (Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0"));
    }
+
+   function dropDownColours(selected) {
+      var colourpicker = 'input'.concat(selected);
+      var input = 'colours'.concat(selected);
+      console.log(colourpicker);
+
+      document.getElementById(colourpicker).value = document.getElementById(input).value;
+
+      updateStrand(selected);
+   }
+
+   // Draw lines 
 
    var svg = document.getElementById('sine_wave').children[0];
 
@@ -253,7 +279,9 @@
    var freq = 0.05; // angular frequency
    //var phase = 0; // phase angle
 
-   function newSine(phase, selecter, isSine) {
+   var offset = 2480 * freq;
+
+   function newLine(phase, selecter, isSine) {
       var strand = 'strand'.concat(selecter).concat(" svg");;
       var input = 'input'.concat(selecter);
 
@@ -275,11 +303,13 @@
          for (var i = -1; i < 5; i++) {
             var line = document.createElementNS("http://www.w3.org/2000/svg", "line");
 
-            line.setAttribute('x1', (lineOrigin.x) - phase + i * 124);
+
+
+            line.setAttribute('x1', (lineOrigin.x) - phase + i * offset);
             line.setAttribute('y1', lineOrigin.y);
 
-            line.setAttribute('x2', (lineOrigin.x+64) - phase + i * 124);
-            line.setAttribute('y2', lineOrigin.y-8);
+            line.setAttribute('x2', (lineOrigin.x + 64) - phase + i * offset);
+            line.setAttribute('y2', lineOrigin.y - 8);
 
             line.setAttribute('class', strand);
             svg.appendChild(line);
@@ -287,12 +317,35 @@
       }
    }
 
-   newSine(0, '1', true);
-   newSine(188, '3', true);
-   newSine(0, '2', false);
-   newSine(-124 / 2, '4', false);
+   function populateColours() {
+      var colours = [
+         ["Custom", "###"],
+         ["Red", "#ff0000"]
+      ];
+
+      for (i = 0; i < colours.length; i++) {
+         // get reference to select element
+         for (str = 1; str < 5; str++) {
+            var strand = 'colours'.concat(str);
+
+            var sel = document.getElementById(strand);
+            var opt = document.createElement('option');
+
+            opt.appendChild(document.createTextNode(colours[i][0]));
+            opt.value = colours[i][1];
+            sel.appendChild(opt);
+         }
+      }
+   }
+
+
+   newLine(0, '1', true);
+   newLine(188, '3', true);
+   newLine(0, '2', false);
+   newLine(-124 / 2, '4', false);
 
    resetColours();
    changeThickness();
+   populateColours();
 
 </script>
