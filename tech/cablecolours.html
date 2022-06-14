@@ -29,7 +29,7 @@
          color: rgb(0, 0, 0);
          padding: 10px;
          margin: 15px;
-
+         font-size: 0.6em;
          text-decoration: none;
          display: inline-block;
          cursor: pointer;
@@ -131,7 +131,7 @@
          <br />
          <select name="colours" class="stranddropdown" id="colours2" oninput="dropDownColours(2)"
             onmouseover="highlight(2)" onmouseout="changeThickness()">
-            <option value="###" selected hidden>Custom
+            <option value="###" selected hidden>Custom</option>
          </select>
       </div>
 
@@ -380,9 +380,84 @@
 
    function populateColours() {
       var colours = [
-         ["Custom", "###"],
-         ["Red", "#ff0000"]
+         [" Custom", "###"],
+         //Yellows
+         ["Yellow", "e9cb4b"],
+         ["Ocher", "be981f"],
+         ["Goldenrod", "c4891c"],
+         ["Gold", "b4975e"],
+         ["Caramel", "a16a32"],
+         ["Banana", "e1cc4f"],
+         ["Snow", "f1f1f1"],
+
+         //Reds
+         ["Imperial", "8d2030"],
+         ["Fuschia", "9f3e60"],
+         ["Crimson", "6c332d"],
+         ["Chilli", "9c302b"],
+         ["Burgundy", "5d192f"],
+
+         //Purple
+         ["Royal Purple", "37284b"],
+         ["Purple", "3e3760"],
+         ["Lavender", "5c5e87"],
+         ["Deep Purple", "664674"],
+
+         //Pink
+         ["Salmon Pink", "f0615d"],
+         ["Pastel Pink", "bf8b9c"],
+         ["Bubblegum", "ea649e"],
+
+         //Orange
+         ["Royal Orange", "c8740f"],
+         ["Orange", "fa6d37"],
+         ["Mustard", "8e5130"],
+         ["Golden Copper", "e28f54"],
+         ["Fox", "e07235"],
+         ["Apricot", "e97a05"],
+
+         //Greys
+         ["Silver", "aeaeae"],
+         ["Steel", "525551"],
+         ["Smoke", "6c6c66"],
+         ["Charcoal", "5e605d"],
+         ["Black", "0e0e0e"],
+         ["Anthracite", "292d31"],
+
+         //Green
+         ["Turquoise", "86d5b8"],
+         ["Sea Green", "068a5c"],
+         ["Leaf", "688742"],
+         ["Greenstone", "417247"],
+         ["Forest", "617b44"],
+         ["Foliage", "5b594b"],
+
+         //Brown
+         ["Walnut", "564539"],
+         ["Coyote", "615237"],
+         ["Chocolate", "763825"],
+         ["Branch", "8a6a4b"],
+
+         //Blue
+         ["Electric", "103eb6"],
+         ["Sapphire", "106084"],
+         ["Pastel Blue", "84c9d7"],
+         ["Neon Turquoise", "4da9ba"],
+         ["Navy", "3e454f"],
+         ["Midnight", "2b3049"],
+         ["Dark Cyan", "027289"],
+         ["Colonial", "2c59aa"],
+         ["Cerulean", "1ea0c0"],
+         ["Caribbean", "437c92"],
+         ["Baby Blue", "76a9cf"],
+
+         //Beige
+         ["Tan", "9d907f"],
+         ["Cream", "c8b79a"],
+
       ];
+
+      colours.sort();
 
       for (i = 0; i < colours.length; i++) {
          // get reference to select element
@@ -393,7 +468,7 @@
             var opt = document.createElement('option');
 
             opt.appendChild(document.createTextNode(colours[i][0]));
-            opt.value = colours[i][1];
+            opt.value = "#" + colours[i][1];
             sel.appendChild(opt);
          }
       }
