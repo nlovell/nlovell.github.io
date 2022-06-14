@@ -10,6 +10,60 @@
          stroke-linejoin: round;
       }
 
+      .cableconfigbutton {
+         background-color: rgb(0, 0, 0);
+         border: none;
+         color: rgb(255, 255, 255);
+         padding: 10px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         margin: 10px;
+         cursor: pointer;
+         border-radius: 16px;
+      }
+
+      .stranddropdown {
+         background-color: rgb(226, 226, 226);
+         border: none;
+         color: rgb(0, 0, 0);
+         padding: 10px;
+         margin: 15px;
+
+         text-decoration: none;
+         display: inline-block;
+         cursor: pointer;
+         border-radius: 16px;
+      }
+
+      #copybox,
+      #thick {
+         background-color: rgb(226, 226, 226);
+         border: none;
+         color: rgb(0, 0, 0);
+         padding: 10px 20px;
+         text-decoration: none;
+         display: inline-block;
+         cursor: pointer;
+         border-radius: 16px;
+      }
+
+      #copybox {
+         margin: 40px;
+      }
+
+      #thick {
+         clear: left;
+         text-align: center;
+         padding-right: 10px;
+      }
+
+      .thicklabel {
+
+         margin-right: 20px;
+      }
+
+
       .shadow {
          -webkit-filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .7));
          filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, .7));
@@ -66,7 +120,8 @@
          <br /> <br />
          <label for=" head">Strand 1</label>
          <br />
-         <select name="colours" id="colours1" oninput="dropDownColours(1)" onmouseover="highlight(1)" onmouseout="changeThickness()"></select>
+         <select name="colours" class="stranddropdown" id="colours1" oninput="dropDownColours(1)"
+            onmouseover="highlight(1)" onmouseout="changeThickness()"></select>
       </div>
 
       <div class="col"> <input type="color" class="picker" id="input2" name="head" oninput="testFunc(2)"
@@ -74,7 +129,8 @@
          <br /> <br />
          <label for="head">Strand 2</label>
          <br />
-         <select name="colours" id="colours2" oninput="dropDownColours(2)" onmouseover="highlight(2)" onmouseout="changeThickness()">
+         <select name="colours" class="stranddropdown" id="colours2" oninput="dropDownColours(2)"
+            onmouseover="highlight(2)" onmouseout="changeThickness()">
             <option value="###" selected hidden>Custom
          </select>
       </div>
@@ -84,7 +140,8 @@
          <br /> <br />
          <label for="head">Strand 3</label>
          <br />
-         <select name="colours" id="colours3" oninput="dropDownColours(3)" onmouseover="highlight(3)" onmouseout="changeThickness()"></select>
+         <select name="colours" class="stranddropdown" id="colours3" oninput="dropDownColours(3)"
+            onmouseover="highlight(3)" onmouseout="changeThickness()"></select>
       </div>
 
       <div class="col"> <input type="color" class="picker" id="input4" name="head" oninput="testFunc(4)"
@@ -92,7 +149,8 @@
          <br /> <br />
          <label for="head">Strand 4</label>
          <br />
-         <select name="colours" id="colours4" oninput="dropDownColours(4)" onmouseover="highlight(4)" onmouseout="changeThickness()"></select>
+         <select name="colours" class="stranddropdown" id="colours4" oninput="dropDownColours(4)"
+            onmouseover="highlight(4)" onmouseout="changeThickness()"></select>
       </div>
    </div>
 
@@ -108,24 +166,23 @@
 
    <div class="flex-grid">
       <div class="col">
-         <input type="button" name="head" onClick="resetColours()" value="Random Colours"></div>
+         <input type="button" class="cableconfigbutton" name="head" onClick="resetColours()" value="Random Colours">
+      </div>
       <div class="col">
-         <label for="thick">Thickness</label>
-         <input type="number" id="thick" name="thick" value="3" min="1" max="15" onChange="changeThickness()">
+         <label for="thick" class="thicklabel">Thickness</label>
+         <input type="number" id="thick" class="thick" name="thick" value="3" min="1" max="15"
+            onChange="changeThickness()">
       </div>
    </div>
 
-   <br /> <br />
-
    <div class="flex-grid">
       <textarea id="copybox" class="lower" rows=6 cols=60></textarea>
-
    </div>
    <div class="flex-grid">
 
-      <input type="button" class="lower" name="head" onClick="copy()" value="Copy Colours">
-      <input type="button" class="lower" name="head" onClick="loadColours()" value="Load Current">
-      <input type="button" class="lower" name="head" onClick="clipboardLoad()" value="Clear">
+      <input type="button" class="lower cableconfigbutton" name="head" onClick="copy()" value="Copy Colours">
+      <input type="button" class="lower cableconfigbutton" name="head" onClick="loadColours()" value="Load Current">
+      <input type="button" class="lower cableconfigbutton" name="head" onClick="clipboardLoad()" value="Clear">
 
    </div>
 
