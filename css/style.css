@@ -33,6 +33,15 @@ div img {
 #nlovell {
 	bottom: 4.5%;
 	font-size: 2.5vmin;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 2%;
+	text-align: center;
+	margin: auto;
+	color: #D1D0CB;
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size: 1.5vmin;
 }
 
 .footerText {
