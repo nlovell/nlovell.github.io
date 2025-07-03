@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Playlist Button</title>
+  <style>
+    :root {
+      --primary-color: #1DB954;
+      --button-bg: linear-gradient(135deg, #1DB954 0%, #1ed760 100%);
+      --button-hover: linear-gradient(135deg, #1ed760 0%, #1DB954 100%);
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #121212;
+      font-family: var(--font-family);
+      color: #fff;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--button-bg);
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+    .btn:hover {
+      background: var(--button-hover);
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 7px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <button class="btn" id="spotify-btn">Click for Spotify playlist</button>
+  <script>
+    document.getElementById('spotify-btn').addEventListener('click', function() {
+      window.open('https://open.spotify.com/playlist/4tr9S1KC9SSMiR9d5lWRLR', '_blank');
+    });
+  </script>
+</body>
+</html>
