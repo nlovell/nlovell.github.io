@@ -166,3 +166,7 @@ a:visited {
   color: white;
   transform: rotateY(-180deg);
 }
+
+a {
+	color: white;
+}

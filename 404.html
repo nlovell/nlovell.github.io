@@ -1,56 +1,86 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>404 Not Found</title>
-  </head>
-  <body>
-    <script>
-      window.onload = () => {
-        const url = new URL(window.location.href);
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#" lang="en">
 
-        function render404(extra) {
-          // Clear body
-          document.body.innerHTML = '';
-          const h1 = document.createElement('h1');
-          h1.textContent = '404 - Page Not Found';
-          const p = document.createElement('p');
-          p.textContent = 'The page could not be found.';
-          document.body.appendChild(h1);
-          document.body.appendChild(p);
-          if (extra) {
-            const p2 = document.createElement('p');
-            p2.innerHTML = extra;
-            document.body.appendChild(p2);
-          }
-        }
+<head>
+  <meta charset="UTF-8">
+  <title>404 not found | al@nlovell.net</title>
+  <script>
+    //pseudoStyle
+    (function(){a={_b:0,c:function(){this._b++;return this.b;}};HTMLElement.prototype.pseudoStyle=function(d,e,f){var g="pseudoStyles";var h=document.head||document.getElementsByTagName('head')[0];var i=document.getElementById(g)||document.createElement('style');i.id=g;var j="pseudoStyle"+a.c();this.className+=" "+j;i.innerHTML+=" ."+j+":"+d+"{"+e+":"+f+"}";h.appendChild(i);return this;};})();
+  </script>
+  <script src="js/noise.js"></script>
+  <link rel="icon" type="image/png" href="img/al-logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/gstyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+</head>
 
-        // Check if already redirected
-        if (url.searchParams.get('lcr') === 'true') {
-          render404();
-          return;
-        }
+<body style="overflow:hidden;">
 
-        // Generate lowercase version of full URL (path + search + hash)
-        const lowerHref = (
-          url.origin + url.pathname.toLowerCase() +
-          url.search.toLowerCase() +
-          url.hash.toLowerCase()
-        );
+  <a href="index">
+    <img class="drive" src="img/favicon.png">
+  </a>
 
-        // Append the lcr flag
-        const separator = lowerHref.includes('?') ? '&' : '?';
-        const redirectURL = `${lowerHref}${separator}lcr=true`;
+  <div class="center">
+    <div id="element">
+      <p id="glitchyboi" class="glitch"></p>
+      <script>
+        //initialises the glitch thing for 404
+        var x = document.getElementsByClassName("glitch");
+        x[0].innerHTML = "404 - page not found";
+        x[0].pseudoStyle("before","content","'404 - page not found'");
+        x[0].pseudoStyle("after","content","'404 - page not found'");
+      </script>
+    </div>
+  </div>
 
-        // Only redirect if the current URL is not already lowercase
-        if (window.location.href !== redirectURL) {
-          window.location.replace(redirectURL);
-        } else {
-          // If somehow already lowercased and still 404, show fallback
-          const altUrl = `${url.origin}/r${url.pathname}`;
-          render404(`This may be a redirect that has moved. Try <a href="${altUrl}">${altUrl}</a>`);
-        }
-      };
-    </script>
-  </body>
+  <footer id="footer-extra" style="display:none; text-align:center; font-family:sans-serif; position:fixed; left:0; right:0; bottom:0; margin:0 auto; padding:1em 0; background:#000; color:#fff; z-index:1000;">
+    <style>
+      #footer-extra, #footer-extra a { color: #fff !important; }
+      #footer-extra a { text-decoration: underline !important; }
+    </style>
+  </footer>
+  <script>
+    // Show alternative link as a centered sans-serif footer if not redirected
+    window.addEventListener('DOMContentLoaded', () => {
+      const url = new URL(window.location.href);
+      if (true || url.searchParams.get('lcr') === 'true') {
+        const altUrl = `${url.origin}/r${url.pathname}`;
+        const footer = document.getElementById('footer-extra');
+        footer.innerHTML = `This may be a redirect that has moved. Try <a href="${altUrl}">${altUrl}</a>`;
+        footer.style.display = '';
+      }
+    });
+  </script>
+
+  <script>
+    // Lowercase redirect logic
+    window.onload = () => {
+      const url = new URL(window.location.href);
+      // Check if already redirected
+      if (url.searchParams.get('lcr') === 'true') return;
+
+      // Generate lowercase version of full URL (path + search + hash)
+      const lowerHref = (
+        url.origin + url.pathname.toLowerCase() +
+        url.search.toLowerCase() +
+        url.hash.toLowerCase()
+      );
+
+      // Append the lcr flag
+      const separator = lowerHref.includes('?') ? '&' : '?';
+      const redirectURL = `${lowerHref}${separator}lcr=true`;
+
+      // Only redirect if the current URL is not already lowercase
+      if (window.location.href !== redirectURL) {
+        window.location.replace(redirectURL);
+      }
+    };
+  </script>
+
+  <!--tv generates the background-->
+  <canvas id="tv"></canvas>
+  <script src="js/index.js"></script>
+</body>
+
 </html>
